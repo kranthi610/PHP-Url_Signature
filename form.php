@@ -15,47 +15,39 @@ if( isset($_GET['submit'] ) ){
 </head>
 <body>
 
-<form  id="myform" name="member_signup">
-    Select image to upload:
-    <input type="hidden" id="tt" name="hi" value="eeqweqw">
+<form  id="myform">
     <input type="" id="sign" name="signature">
     <label>First Name:</label>
     <input type="text" name="fistname">
     <label>Last Name:</label>
     <input type="text" name="lastname">
-    <label>Club#:</label>
-    <input type="text" name="club_id">
-    <input type="submit" id="submit" value="Upload Image" name="submit">
+    <input type="submit" id="submit" name="submit">
 </form>
 <script>
 $(document).ready(function(){
-
-
+    
   $('#myform').submit(function(e){
+    //prevent default submit action
     e.preventDefault();
+    //get form input values
     var dataString = $("#myform").serialize();
    $.ajax({
       type: "POST",
-      url: "/php/test1.php",
+      url: "/php/signature.php",
       data: {'string':dataString},
       success: function(html)
       {
+        //attach the signatue to input value
         $('#sign').val(html);
+          //unbind all events attached tot he form
         $('#myform').off();
+        //click the submit button to submit form
         $('#submit').click();
       }
 
 
     });
   });
-  
-
-
-
-
-
-
-
 
 });
 </script>
