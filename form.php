@@ -39,7 +39,7 @@ $(document).ready(function(){
       {
         //attach the signatue to input value
         $('#sign').val(html);
-          //unbind all events attached tot he form
+          //unbind all events attached to the form
         $('#myform').off();
         //click the submit button to submit form
         $('#submit').click();
